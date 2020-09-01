@@ -7,7 +7,9 @@ class GamesRoutes {
   }
 
   config() {
-    this.router.get("/", (req, res) => res.send("hello"));
+    this.router.get("/", (req, res) =>
+      res.send("estas dentro de games routes")
+    );
   }
 }
 
