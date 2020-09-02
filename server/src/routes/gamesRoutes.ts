@@ -1,3 +1,4 @@
+import { gamesController } from "./../controllers/gamesController";
 import { Router } from "express";
 class GamesRoutes {
   public router: Router = Router();
@@ -7,9 +8,11 @@ class GamesRoutes {
   }
 
   config() {
-    this.router.get("/", (req, res) =>
-      res.send("estas dentro de games routes")
-    );
+    this.router.get("/", gamesController.index);
+    this.router.get("/:id", gamesController.getGameById);
+    this.router.post("/", gamesController.store);
+    this.router.put("/:id", gamesController.update);
+    this.router.delete("/:id", gamesController.delete);
   }
 }
 
