@@ -2,15 +2,6 @@
   <div>
     <span class="display-4">Cursos</span>
   </div>
-  <div>
-    <a
-      class="btn btn-primary"
-      [routerLink]="['/nuevo']"
-      data-target="#myModal"
-      data-toggle="modal"
-      >Nuevo Curso</a
-    >
-  </div>
 </div>
 
 <table class="table" *ngIf="games$ | async as cursos; else loading">
@@ -27,7 +18,7 @@
       <td>{{ item.title }}</td>
       <td class="float-right">
         <a
-          class="btn btn-warning"
+          class="btn btn-primary"
           [routerLink]="['/cursos', item.id, 'editar']"
         >
           Actualizar</a
