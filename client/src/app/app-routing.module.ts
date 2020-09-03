@@ -6,6 +6,7 @@ import { GameFormComponent } from './components/game-form/game-form.component';
 const routes: Routes = [
   { path: 'games', component: GameListComponent },
   { path: 'games/add', component: GameFormComponent },
+  { path: 'edit/:id', component: GameFormComponent },
 ];
 
 @NgModule({

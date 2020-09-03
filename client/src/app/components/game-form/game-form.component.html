@@ -1,1 +1,73 @@
-<p>game-form works!</p>
+<form [formGroup]="formulario">
+  <label for="title">Title</label>
+
+  <div class="form-group">
+    <input type="text" class="form-control" #title formControlName="title" />
+    <div
+      class="form-group mt-1"
+      *ngIf="
+        !formulario.controls.title.valid && formulario.controls.title.touched
+      "
+    >
+      <div class="alert alert-danger alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">
+          &times;
+        </button>
+        <strong>Atencion!</strong> El campo Title name es obligatorio
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+
+    <input
+      type="text"
+      class="form-control"
+      #description
+      formControlName="description"
+    />
+    <div
+      class="form-group mt-1"
+      *ngIf="
+        !formulario.controls.description.valid &&
+        formulario.controls.description.touched
+      "
+    >
+      <div class="alert alert-danger alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">
+          &times;
+        </button>
+        <strong>Atencion!</strong> El campo description name es obligatorio
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="image">Image url</label>
+
+    <input type="text" class="form-control" #image formControlName="image" />
+    <div
+      class="form-group mt-1"
+      *ngIf="
+        !formulario.controls.image.valid && formulario.controls.image.touched
+      "
+    >
+      <div class="alert alert-danger alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">
+          &times;
+        </button>
+        <strong>Atencion!</strong> El campo image name es obligatorio
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="form-group">
+  <button
+    class="btn btn-primary"
+    [disabled]="!formulario.valid"
+    (click)="procesar()"
+  >
+    Procesar
+  </button>
+</div>

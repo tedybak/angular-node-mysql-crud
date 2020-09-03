@@ -17,10 +17,7 @@
       <th scope="row">{{ item.id }}</th>
       <td>{{ item.title }}</td>
       <td class="float-right">
-        <a
-          class="btn btn-primary"
-          [routerLink]="['/cursos', item.id, 'editar']"
-        >
+        <a class="btn btn-primary" [routerLink]="['/edit', item.id]">
           Actualizar</a
         ><button
           class="btn btn-danger ml-2"

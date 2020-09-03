@@ -28,7 +28,7 @@ export class GameListComponent implements OnInit {
         return empty();
       })
     );
-    //this.showSussesfullMessage();
+    this.showSussesfullMessage();
   }
 
   showSussesfullMessage() {
