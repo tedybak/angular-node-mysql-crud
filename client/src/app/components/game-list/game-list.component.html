@@ -17,14 +17,10 @@
       <th scope="row">{{ item.id }}</th>
       <td>{{ item.title }}</td>
       <td class="float-right">
-        <a class="btn btn-primary" [routerLink]="['/edit', item.id]">
+        <a class="btn btn-primary" [routerLink]="['edit', item.id]">
           Actualizar</a
-        ><button
-          class="btn btn-danger ml-2"
-          [routerLink]="['/cursos', item.id, 'borrar']"
         >
-          Borrar
-        </button>
+        <a class="btn btn-danger ml-1" (click)="deleteGame(item.id)"> Borrar</a>
       </td>
     </tr>
   </tbody>

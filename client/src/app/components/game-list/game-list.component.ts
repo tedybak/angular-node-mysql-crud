@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ModalComponent } from './../../shared/modal/modal.component';
 import { GamesService } from './../../services/games.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,30 +16,36 @@ import { AlertModalService } from './../../shared/alert-modal.service';
 export class GameListComponent implements OnInit {
   constructor(
     private service: GamesService,
-    private modaleService: AlertModalService
+    private modaleService: AlertModalService,
+    private route: Router
   ) {}
   games$: Observable<any>;
   error$ = new Subject<boolean>();
 
   ngOnInit(): void {
+    this.getGames();
+  }
+
+  deleteGame(id) {
+    this.service.deleteGame(id).subscribe(
+      (resp) => {
+        this.modaleService.handleError(
+          'danger',
+          'El registro se ha eliminado satisfactoriamente'
+        );
+        this.getGames();
+      },
+      (error) => console.log(error)
+    );
+  }
+
+  getGames() {
     this.games$ = this.service.getGames().pipe(
       catchError((error) => {
         this.error$.next(true);
-        this.handleError();
+        this.modaleService.handleError('danger', 'Ha habido un error');
         return empty();
       })
     );
-    this.showSussesfullMessage();
-  }
-
-  showSussesfullMessage() {
-    this.modaleService.handleError(
-      'success',
-      'Registros listados correctamente'
-    );
-  }
-
-  handleError() {
-    this.modaleService.handleError('danger', 'Ha habido un error');
   }
 }

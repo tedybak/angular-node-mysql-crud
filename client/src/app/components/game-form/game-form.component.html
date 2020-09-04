@@ -2,7 +2,14 @@
   <label for="title">Title</label>
 
   <div class="form-group">
-    <input type="text" class="form-control" #title formControlName="title" />
+    <input
+      type="text"
+      class="form-control"
+      name="title"
+      #title
+      formControlName="title"
+      [(ngModel)]="data.title"
+    />
     <div
       class="form-group mt-1"
       *ngIf="
@@ -26,6 +33,7 @@
       class="form-control"
       #description
       formControlName="description"
+      [(ngModel)]="data.description"
     />
     <div
       class="form-group mt-1"
@@ -45,7 +53,13 @@
   <div class="form-group">
     <label for="image">Image url</label>
 
-    <input type="text" class="form-control" #image formControlName="image" />
+    <input
+      type="text"
+      class="form-control"
+      #image
+      formControlName="image"
+      [(ngModel)]="data.image"
+    />
     <div
       class="form-group mt-1"
       *ngIf="
@@ -67,7 +81,16 @@
     class="btn btn-primary"
     [disabled]="!formulario.valid"
     (click)="procesar()"
+    *ngIf="!edit"
   >
-    Procesar
+    Save
+  </button>
+  <button
+    class="btn btn-primary"
+    [disabled]="!formulario.valid"
+    (click)="update()"
+    *ngIf="edit"
+  >
+    Update
   </button>
 </div>
